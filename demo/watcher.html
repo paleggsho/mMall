@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="./../node_modules/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app" class="app">
+  
+            <label>姓名:</label>
+            <input :value="name" @input="name = $event.target.value">
+             
+            <select v-model="sex">
+              <option value="1">男</option>
+              <option value="0">女</option>
+            </select>
+           
+          <p>{{infoName}}</p>
+          <p>{{infoSex}}</p>
+          <h1>{{ fullName}}</h1>
+        </div>
+        <script>
+            var myVue = new Vue({
+                el: '#app',
+                props:['msg','msg2'],
+                data(){
+                 return {
+                   name:"",
+                   sex:1,
+                   resultObj:{
+                     allInfo:""
+                   },
+                   fullName: ''
+                 }
+               },
+               computed:{
+                 infoName(){
+                   return "您的姓名是：" + this.name;
+                 },
+                 infoSex(){
+                   return "您的性别是：" + (this.sex == 1 ? "男":"女");
+                 }
+               },
+               watch:{
+                 sex:function(newSex){
+                   this.resultObj.allInfo = this.name + "|" + this.sex;
+                   alert("你的性别已经改为"+ (this.sex == 1 ? "男":"女"));
+                 },
+                 name:function(newName){
+                   this.resultObj.allInfo = this.name + "|" + this.sex;
+                    alert("你的名字已经改为"+ newName);
+                 },
+                 "resultObj.allInfo":function(newInfo){
+                   alert("你新的的所有信息为"+ newInfo);
+                 },
+                 msg(){
+                   return this.fullName = this.msg+this.msg2
+                 },
+                 msg2(){
+                   return this.fullName = this.msg+this.msg2
+                 }
+               },
+            })
+            
+        </script>
+    </body>
+</html>

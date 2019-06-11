@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Promise</title>
+    </head>
+    <body>
+        <h2>Promise</h2>
+        <script>
+            let checkLogin = function () {
+                //resolve 调用成功执行的回调，reject调用失败执行的回调
+                return new Promise ((resolve, reject) => {
+                    let flag = document.cookie.indexOf("userId") > -1 ? true : false
+                    if (flag = true) {
+                        resolve({
+                            status: 0,
+                            result: true
+                        })
+                    }else {
+                        reject("error")
+                    }
+                })
+            }
+            let getUserInfo = () => {
+                return new Promise((resolve, reject) => {
+                    let userInfo = {
+                        userId: "101"
+                    }
+                    resolve(userInfo)
+                })
+            }
+            checkLogin().then((res) => {
+                if(res.status == 0){
+                    console.log("login success")
+                    return getUserInfo()
+                }
+            }).catch((error) => {
+                console.log(`error: ${error}`)
+            }).then((res2) => {
+                console.log(`userId: ${res2.userId}`)
+            })
+
+            Promise.all([checkLogin(), getUserInfo()]).then(([res1, res2]) => {
+                console.log(`results1: ${res1.status}, results2: ${res2.userId}`)
+            })
+        </script>
+    </body>
+</html>

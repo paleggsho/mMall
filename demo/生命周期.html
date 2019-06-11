@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <div  id="app-8">
+            <section>
+                {{data}}
+            </section>
+            <input v-model="fun">
+        </div>
+        
+        <script src="./../node_modules/vue/dist/vue.js"></script>
+        <script>
+            var myVue = new Vue({
+                el: "#app-8",
+                data: {
+                    data: "aaa",
+                    info: "nono"
+                },
+                computed:{
+                    fun(){
+                        return this.info
+                    }
+                },
+                beforeCreate:function(){
+                    console.log("beforeCreate---------")
+                    console.log(data.data)
+                    console.log(data.$el)
+                },
+                created:function(){
+                    console.log("已创建========")
+                    console.log(this.info)
+                    console.log(this.$el)
+                },
+                beforeMount:function(){
+                    console.log("mount之前========")
+                    console.log(this.info)
+                    console.log(this.$el)
+                },
+                mounted:function(){
+                    console.log("mounted========")
+                    console.log(this.info)
+                    console.log(this.$el)
+                },
+                beforeUpdate:function(){
+                    console.log("更新前========");
+
+                },
+                updated:function(){
+                    console.log("更新完成========");
+                },
+                beforeDestroy:function(){
+                    console.log("销毁前========")
+                    console.log(this.info)
+                    console.log(this.$el)
+                },
+                destroyed:function(){
+                    console.log("已销毁========")
+                    console.log(this.info)
+                    console.log(this.$el)
+                }
+            })
+        </script>
+    </body>
+</html>
