@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <h1>Vue.set</h1>
+        <hr>
+        <div id="app">
+            <!-- {{count}}
+            <ul>
+                <li v-for="item in arr">{{item}}</li>
+            </ul> -->
+            <p>{{obj.d}}</p>
+            <p><button @click="addd(obj)">addd</button></p>
+            <p>{{obj.e}}</p>
+            <p><button @click="adde(obj)">adde</button></p>
+        </div>
+        <p><button onclick="add()">ADD</button></p>
+        
+        <script src="./../node_modules/vue/dist/vue.js"></script>
+        <script>
+            // function add(){
+            //     myVue.count++
+            //     Vue.set(myVue.arr, 1, 'dd')
+            // }
+            // var outData = {
+            //     count: 1,
+            //     arr: ['aa', 'bb', 'cc']
+            // }
+            var myVue = new Vue({
+                el: "#app",
+                data() {
+                    return{
+                        obj: {}
+                    }
+                },
+                mounted() {
+                    this.obj = {d: 0};
+                    this.$set(this.obj, 'e', 0);//使用 Vue.set(object, key, value) 方法将响应属性添加到嵌套的对象上：
+                    // this.obj.e = 0; //属性e是新增属性
+                    console.log('after--', this.obj);
+                },
+                methods: {
+                    addd(item){
+                        item.d = item.d + 1;
+                        console.log('item--d', item);
+                    },
+                    adde(item){
+                        item.e = item.e + 1;
+                        console.log('item-e', item);
+                    }
+                }
+            })
+            
+        </script>
+    </body>
+</html>

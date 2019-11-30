@@ -141,7 +141,7 @@ import NavHeader from '@/components/NavHeader';
 import NavBread from '@/components/NavBread';
 import Modal from '@/components/Modal';
 import axios from 'axios'
-import {currency} from '@/util/currency';
+import Mycounter from '@/util/counter';
 import './../assets/css/checkout.css';
 export default {
     data(){

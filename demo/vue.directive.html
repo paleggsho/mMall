@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <h1>Vue.directive</h1>
+        <hr>
+        <div id="app">
+            <div v-jspang="color">{{num}}</div>
+            <p><button @click="add">ADD</button></p>
+        </div>
+        <p><button onclick="unbind()">解绑</button></p>
+        
+        <script src="./../node_modules/vue/dist/vue.js"></script>
+        <script>
+            function unbind(){
+                myVue.$destroy();
+            }
+            Vue.directive("jspang", {
+                bind: function(el, binding){
+                    console.log('1-bind');
+                    // el.style = "color:" + binding.value;
+                },
+                inserted: function(){
+                    console.log('2-insert');
+                },
+                update: function(el, binding){
+                    console.log('3-update');
+                    el.style = "color:" + binding.value
+                },
+                componentUpdated: function(){
+                    console.log('4-componentUpdated');
+                },
+                unbind: function(){
+                    console.log('5-unbind');
+                }
+            })
+            // 
+            var myVue = new Vue({
+                el: "#app",
+                data: {
+                    num: 10,
+                    color: 'green'
+                },
+                methods: {
+                    add() {
+                        this.num ++;
+                    }
+                }
+                // watch: {
+                //     cityName:{
+                //         handler(newName, oldName){
+
+                //         },
+                //         deep: true,
+                //         immdiate: true
+                //     }
+                        
+                // }
+            })
+        </script>
+    </body>
+</html>

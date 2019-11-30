@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <h1>Vue.extend</h1>
+        <hr>
+        <div id="author"></div>
+        
+        <script src="./../node_modules/vue/dist/vue.js"></script>
+        <script>
+            var authorExtend = Vue.extend({
+                template: '<p><a :href="authorURL">{{authorName}}</a></p>',
+                //extend的data必须是一个函数
+                data: function(){
+                    return{
+                        authorName: 'JSPang',
+                        authorURL: 'http://jspang.com'
+                    }
+                }
+            });
+            new authorExtend().$mount('#author');//创建实例，并挂载到一个元素上
+        </script>
+    </body>
+</html>

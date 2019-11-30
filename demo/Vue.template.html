@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <h1>Vue.template</h1>
+        <hr>
+        <div  id="app-8">
+            
+        </div>
+        <template id="dd2">
+            <h2 style="color: red">我是template标签模板</h2>
+        </template>
+
+        <script type="x-template" id="dd3">
+            <h2 style="color: red">我是script标签模板</h2>
+        </script>
+        
+        <script src="./../node_modules/vue/dist/vue.js"></script>
+        <script>
+            var myVue = new Vue({
+                el: "#app-8",
+                data: {
+                    data: "aaa",
+                    info: "nono",
+                    count: 1
+                },
+                template: '#dd3'
+
+                // template: `
+                //     <h2 style="color: red">我是选项模板red</h2>
+                // `
+            })
+        </script>
+    </body>
+</html>

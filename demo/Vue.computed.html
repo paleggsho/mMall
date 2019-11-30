@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <h1>Vue.computed</h1>
+        <hr>
+       
+        <div id="app">
+            {{ newPrice }}
+            <ul>
+                <li v-for="item in reversNews">{{ item.title }}--{{ item.date }}</li>
+            </ul>
+        </div>
+        
+        
+        <script src="./../node_modules/vue/dist/vue.js"></script>
+        <script>
+            var newsList = [
+                {title: '关于党的政治建设，习近平谈到了这个故事',date: '2019-07-20'},
+                {title: '这支“红色文艺轻骑兵”,习近平再次为他们点赞',date: '2019-07-21'},
+                {title: '习近平:我们要建设海洋强国,我一直有这么一个信念',date: '2019-07-22'}
+            ]
+            var myVue = new Vue({
+                el: "#app",
+                data: {
+                    price: 100,
+                    newsList: newsList
+                },
+                computed: {
+                    newPrice(){
+                        return this.price = '￥' + this.price + '元';
+                    },
+                    reversNews(){
+                        return this.newsList.reverse()
+                    }
+                }
+            })
+            
+        </script>
+    </body>
+</html>
